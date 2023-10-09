@@ -1,0 +1,15 @@
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\bin\Debug\net6.0\Market.DAL.deps.json
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\bin\Debug\net6.0\Market.DAL.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\bin\Debug\net6.0\Market.DAL.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\bin\Debug\net6.0\Market.Domain.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\bin\Debug\net6.0\Market.Domain.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.csproj.AssemblyReference.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.AssemblyInfoInputs.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.AssemblyInfo.cs
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.csproj.CopyComplete
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\refint\Market.DAL.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\Market.DAL.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.DAL\obj\Debug\net6.0\ref\Market.DAL.dll

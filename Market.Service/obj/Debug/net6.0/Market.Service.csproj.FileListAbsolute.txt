@@ -1,0 +1,17 @@
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.Service.deps.json
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.Service.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.Service.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.DAL.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.Domain.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.DAL.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\bin\Debug\net6.0\Market.Domain.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.csproj.AssemblyReference.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.AssemblyInfoInputs.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.AssemblyInfo.cs
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.csproj.CopyComplete
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\refint\Market.Service.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\Market.Service.pdb
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Service\obj\Debug\net6.0\ref\Market.Service.dll
