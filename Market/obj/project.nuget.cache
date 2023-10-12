@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qTIVZTiLHgWv1CIYlWLw5NbZdqD96ZTlOlF9eFPF3Uxk0cWy54FqP7vmN0dqB7A+12vF3TMP0tbRAyq1BCKGEQ==",
+  "dgSpecHash": "7Up2RKqj9jRwpniBhHzmPzOD3sIX7m+nNZNxTsQaLpdQ2T6gR/Zpjf2pjBiQC0HtdCaWM9vbI9NzhkXLfbXNhg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\Market.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Пользователь\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

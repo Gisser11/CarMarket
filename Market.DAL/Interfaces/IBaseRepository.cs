@@ -11,9 +11,10 @@ public interface IBaseRepository<T>
 
     Task<Car> Get(int id);
 
-    Task<List<Car>> Select();
+    IQueryable<T> GetAll();
 
     Task<bool> Delete(T entity);
-    
-    
+
+    Task<T> Update(T entity);
+
 }

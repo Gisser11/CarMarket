@@ -4,6 +4,7 @@ using Market.Domain.Enum;
 using Market.Domain.Response;
 using Market.Domain.ViewModels.Car;
 using Market.Service.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Market.Service.Implementation;
 
@@ -21,7 +22,7 @@ public class CarService : ICarService
         var baseResponse = new BaseResponse<IEnumerable<Car>>();
         try
         {
-            var cars = await _carRepository.Select();
+            var cars = await _carRepository.GetAll();
             if (cars.Count == 0)
             {
                 baseResponse.Description = "Найдено 0 элементов";
@@ -58,6 +59,7 @@ public class CarService : ICarService
             }
 
             baseResponse.Data = car;
+            baseResponse.StatusCode = StatusCode.OK;
             return baseResponse;
         }
         catch (Exception ex)
@@ -151,5 +153,41 @@ public class CarService : ICarService
             };
         }
         return baseResponse;
+    }
+
+    public async Task<IBaseResponse<Car>> Edit(int id, CarViewModel carViewModel)
+    {
+        var baseResponse = new BaseResponse<Car>();
+       
+        try
+        {
+            var car = await _carRepository.Get(id);
+
+            if (car == null)
+            {
+                baseResponse.StatusCode = StatusCode.CarNotFound;
+                baseResponse.Description = "Car Not Found";
+                return baseResponse;
+            }
+
+            car.Description = carViewModel.Description;
+            car.Model = carViewModel.Model;
+            car.Price = carViewModel.Price;
+            car.Speed = carViewModel.Speed;
+            car.DataCreate = carViewModel.DataCreate;
+            car.Name = carViewModel.Name;
+            //TypeCar
+            await _carRepository.Update(car);
+
+            return baseResponse;
+        }
+        catch (Exception ex)
+        {
+            return new BaseResponse<Car>()
+            {
+                Description = $"[Edit] : {ex.Message}",
+                StatusCode = StatusCode.InternalServiceError
+            };
+        }
     }
 }
