@@ -22,7 +22,7 @@ public class CarService : ICarService
         var baseResponse = new BaseResponse<IEnumerable<Car>>();
         try
         {
-            var cars = await _carRepository.GetAll();
+            var cars = await _carRepository.Select();
             if (cars.Count == 0)
             {
                 baseResponse.Description = "Найдено 0 элементов";

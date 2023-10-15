@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gOMqv3LYee64c7Edy+LmkKQpoQjLfUJylu8QyYZdQa8=",
+  "Hash": "Owmxis77FeFv6x1f4iFSOHEKulSodE/nGzE+Aj9BdOk=",
   "Source": "Market",
   "BasePath": "_content/Market",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Market.styles.css",
-      "SourceId": "Market",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/Market",
-      "RelativePath": "Market.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Market.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Market.bundle.scp.css",
-      "SourceId": "Market",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/Market",
-      "RelativePath": "Market.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Market.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\wwwroot\\css\\site.css",
       "SourceId": "Market",

@@ -3,6 +3,7 @@ using Market.DAL.Interfaces;
 using Market.DAL.Repositories;
 using Market.Service.Implementation;
 using Market.Service.Interfaces;
+using Market.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +13,12 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<JwtService>();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

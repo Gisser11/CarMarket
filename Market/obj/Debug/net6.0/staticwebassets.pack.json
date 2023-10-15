@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Market.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Market.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

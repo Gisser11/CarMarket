@@ -11,7 +11,7 @@ public interface IBaseRepository<T>
 
     Task<Car> Get(int id);
 
-    IQueryable<T> GetAll();
+    Task<List<Car>> Select();
 
     Task<bool> Delete(T entity);
 

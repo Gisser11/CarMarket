@@ -25,6 +25,11 @@ public class CarRepository : ICarRepository
         return await _db.Car.FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    public IQueryable<Car> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<List<Car>> Select()
     {
         return await _db.Car.ToListAsync();
