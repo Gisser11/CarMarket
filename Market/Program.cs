@@ -1,9 +1,9 @@
 using Market.DAL;
 using Market.DAL.Interfaces;
 using Market.DAL.Repositories;
+using Market.DAL.Repositories.Services;
 using Market.Service.Implementation;
 using Market.Service.Interfaces;
-using Market.Services.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,8 +31,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -41,13 +39,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

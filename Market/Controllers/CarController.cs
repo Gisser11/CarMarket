@@ -17,7 +17,7 @@ namespace Market.Controllers
         {
             _carService = carService;
         }
-
+        [Route("getcars")]
         [HttpGet]
         public async Task<IActionResult> GetCars()
         {
