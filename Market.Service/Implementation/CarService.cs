@@ -54,7 +54,7 @@ public class CarService : ICarService
             if (car == null)
             {
                 baseResponse.Description = "Ошибка, запрос не найден";
-                baseResponse.StatusCode = StatusCode.UserNotFound;
+                baseResponse.StatusCode = StatusCode.NotFound;
                 return baseResponse;
             }
 
@@ -82,7 +82,7 @@ public class CarService : ICarService
             if (car == null)
             {
                 baseResponse.Description = "Ошибка, запрос не найден";
-                baseResponse.StatusCode = StatusCode.UserNotFound;
+                baseResponse.StatusCode = StatusCode.NotFound;
                 return baseResponse;
             }
 
@@ -108,7 +108,7 @@ public class CarService : ICarService
             if (car == null)
             {
                 baseResponse.Description = "Найдено 0 элементов";
-                baseResponse.StatusCode = StatusCode.UserNotFound;
+                baseResponse.StatusCode = StatusCode.NotFound;
                 return baseResponse;
             }
 
@@ -165,7 +165,7 @@ public class CarService : ICarService
 
             if (car == null)
             {
-                baseResponse.StatusCode = StatusCode.CarNotFound;
+                baseResponse.StatusCode = StatusCode.NotFound;
                 baseResponse.Description = "Car Not Found";
                 return baseResponse;
             }

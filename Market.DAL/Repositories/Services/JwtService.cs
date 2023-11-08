@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Market.DAL.Repositories.Services;
 
-public class JwtService : IJwtService
+public class JwtService 
 {
     private string secureKey = "this is secure key";
     
