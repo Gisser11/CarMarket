@@ -1,43 +1,50 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>1898712a-e1b1-42d3-8eb1-f83b78910834</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Market.DAL\Market.DAL.csproj" />
-      <ProjectReference Include="..\Market.Domain\Market.Domain.csproj" />
-      <ProjectReference Include="..\Market.Service\Market.Service.csproj" />
+        <ProjectReference Include="..\Market.DAL\Market.DAL.csproj" />
+        <ProjectReference Include="..\Market.Domain\Market.Domain.csproj" />
+        <ProjectReference Include="..\Market.Service\Market.Service.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-      <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.20" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.20" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.20" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
     </ItemGroup>
 
 
-
-
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Car\GetCar.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Car\GetCars.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Car\GetCar.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Car\GetCars.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
     </ItemGroup>
 
 

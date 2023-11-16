@@ -25,16 +25,11 @@ public class CarRepository : ICarRepository
         return await _db.Car.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public IQueryable<Car> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<List<Car>> Select()
     {
         return await _db.Car.ToListAsync();
     }
-    
+
     public async Task<bool> Delete(Car entity)
     {
         _db.Car.Remove(entity); // изменения без сохранений 
@@ -53,5 +48,10 @@ public class CarRepository : ICarRepository
     public async Task<Car> GetByName(string name)
     {
         return await _db.Car.FirstOrDefaultAsync(x => x.Name == name);
+    }
+
+    public IQueryable<Car> GetAll()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -4,7 +4,6 @@ using Market.Domain.Enum;
 using Market.Domain.Response;
 using Market.Domain.ViewModels.Car;
 using Market.Service.Interfaces;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Market.Service.Implementation;
 
@@ -16,7 +15,7 @@ public class CarService : ICarService
     {
         _carRepository = carRepository;
     }
-    
+
     public async Task<IBaseResponse<IEnumerable<Car>>> GetCars()
     {
         var baseResponse = new BaseResponse<IEnumerable<Car>>();
@@ -36,7 +35,7 @@ public class CarService : ICarService
         }
         catch (Exception ex)
         {
-            return new BaseResponse<IEnumerable<Car>>()
+            return new BaseResponse<IEnumerable<Car>>
             {
                 Description = $"[GetCars] : {ex.Message}"
             };
@@ -64,7 +63,7 @@ public class CarService : ICarService
         }
         catch (Exception ex)
         {
-            return new BaseResponse<Car>()
+            return new BaseResponse<Car>
             {
                 Description = $"[GetCar] : {ex.Message}",
                 StatusCode = StatusCode.InternalServiceError
@@ -91,7 +90,7 @@ public class CarService : ICarService
         }
         catch (Exception ex)
         {
-            return new BaseResponse<bool>()
+            return new BaseResponse<bool>
             {
                 Description = $"[Delete] : {ex.Message}",
                 StatusCode = StatusCode.InternalServiceError
@@ -118,7 +117,7 @@ public class CarService : ICarService
         }
         catch (Exception ex)
         {
-            return new BaseResponse<Car>()
+            return new BaseResponse<Car>
             {
                 Description = $"[GetCarByName] : {ex.Message}",
                 StatusCode = StatusCode.InternalServiceError
@@ -131,7 +130,7 @@ public class CarService : ICarService
         var baseResponse = new BaseResponse<CarViewModel>();
         try
         {
-            var car = new Car()
+            var car = new Car
             {
                 Description = carViewModel.Description,
                 DataCreate = DateTime.Now,
@@ -142,23 +141,24 @@ public class CarService : ICarService
                 TypeCar = (TypeCar)Convert.ToInt32(carViewModel.TypeCar)
             };
 
-            await _carRepository.Create(car); 
+            await _carRepository.Create(car);
         }
         catch (Exception ex)
         {
-            return new BaseResponse<CarViewModel>()
+            return new BaseResponse<CarViewModel>
             {
                 Description = $"[CreateCar] : {ex.Message}",
                 StatusCode = StatusCode.InternalServiceError
             };
         }
+
         return baseResponse;
     }
 
     public async Task<IBaseResponse<Car>> Edit(int id, CarViewModel carViewModel)
     {
         var baseResponse = new BaseResponse<Car>();
-       
+
         try
         {
             var car = await _carRepository.Get(id);
@@ -183,7 +183,7 @@ public class CarService : ICarService
         }
         catch (Exception ex)
         {
-            return new BaseResponse<Car>()
+            return new BaseResponse<Car>
             {
                 Description = $"[Edit] : {ex.Message}",
                 StatusCode = StatusCode.InternalServiceError

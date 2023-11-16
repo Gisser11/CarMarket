@@ -2,7 +2,6 @@ using Market.DAL.Interfaces;
 using Market.DAL.Repositories.Services;
 using Market.Domain.Entity;
 using Market.Domain.ViewModels.User;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Market.Controllers;
@@ -10,8 +9,8 @@ namespace Market.Controllers;
 [Route("api")]
 public class AuthController : Controller
 {
-    private readonly IUserRepository _userRepository;
     private readonly JwtService _jwtService;
+    private readonly IUserRepository _userRepository;
 
     public AuthController(IUserRepository userRepository, JwtService jwtService)
     {
@@ -19,6 +18,20 @@ public class AuthController : Controller
         _jwtService = jwtService;
     }
 
+    [Route("checkEmail")]
+    [HttpPost]
+    public async Task<IActionResult> checkEmail([FromBody] UserCheckEmailViewModel userCheckEmailViewModel)
+    {
+        var response = _userRepository.GetByEmail(userCheckEmailViewModel.Email);
+        
+        if (response != null)
+        {
+            return Ok(true);
+        }
+        
+        return Ok(false);
+    }
+    
     [Route("register")]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] UserRegisterViewModel dto)
@@ -38,29 +51,21 @@ public class AuthController : Controller
     {
         var response = _userRepository.GetByEmail(loginDto.Email);
 
-        if (response == null)
-        {
-            return BadRequest(new {message="Wrong Data"});
-        }
-
+        if (response == null) return BadRequest(new { message = "Wrong Data" });
         if (!BCrypt.Net.BCrypt.Verify(loginDto.Password, response.Password))
-        {
-            return BadRequest(new {message="Wrong Data"});
-        }
+            return BadRequest(new { message = "Wrong Data" });
 
         var token = _jwtService.GenerateJwtToken(response.Id);
-        
+
         Response.Cookies.Append("token", token, new CookieOptions
         {
-            HttpOnly = true
         });
-        
         return Ok(new
         {
-            message="Ok" 
+            message = "Ok"
         });
     }
-    
+
     [Route("list")]
     [HttpGet]
     public async Task<IActionResult> SelectAll()
@@ -78,7 +83,7 @@ public class AuthController : Controller
 
             var token = _jwtService.Verify(cookiesToken);
 
-            int userId = int.Parse(token.Issuer);
+            var userId = int.Parse(token.Issuer);
 
             var user = _userRepository.GetById(userId);
 
@@ -89,13 +94,14 @@ public class AuthController : Controller
             return Unauthorized();
         }
     }
+
     [HttpPost("delete")]
     public IActionResult Logout()
     {
         Response.Cookies.Delete("token");
 
         return Ok(new
-        {   
+        {
             message = "success"
         });
     }

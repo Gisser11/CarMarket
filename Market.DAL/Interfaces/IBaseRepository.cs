@@ -1,5 +1,3 @@
-using Market.Domain.Entity;
-
 namespace Market.DAL.Interfaces;
 
 // При наследовании
@@ -9,12 +7,11 @@ public interface IBaseRepository<T>
 {
     Task<bool> Create(T entity);
 
-    Task<Car> Get(int id);
+    Task<T> Get(int id);
 
-    Task<List<Car>> Select();
+    Task<List<T>> Select();
 
     Task<bool> Delete(T entity);
 
     Task<T> Update(T entity);
-
 }

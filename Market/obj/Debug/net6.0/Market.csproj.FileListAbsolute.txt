@@ -73,3 +73,11 @@ C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\BCrypt.Net-Next.dll
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market\obj\Debug\net6.0\Market.MvcApplicationPartsAssemblyInfo.cs

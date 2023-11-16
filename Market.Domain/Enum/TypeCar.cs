@@ -4,16 +4,10 @@ namespace Market.Domain.Enum;
 
 public enum TypeCar
 {
-    [Display(Name = "Легковой")]
-    PassengerCar = 0,
-    [Display(Name = "Седан")]
-    Sedan = 1,
-    [Display(Name = "Хэтчбэк")]
-    HatchBack = 2,
-    [Display(Name = "Минивэн")]
-    Minivan = 3,
-    [Display(Name = "СпортКар")]
-    SportsCar = 4,
-    [Display(Name = "Внедорожник")]
-    Suv = 5
+    [Display(Name = "Легковой")] PassengerCar = 0,
+    [Display(Name = "Седан")] Sedan = 1,
+    [Display(Name = "Хэтчбэк")] HatchBack = 2,
+    [Display(Name = "Минивэн")] Minivan = 3,
+    [Display(Name = "СпортКар")] SportsCar = 4,
+    [Display(Name = "Внедорожник")] Suv = 5
 }

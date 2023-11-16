@@ -4,5 +4,5 @@ public enum StatusCode
 {
     OK = 200,
     InternalServiceError = 500,
-    NotFound = 404,
+    NotFound = 404
 }

@@ -12,7 +12,7 @@ public class UserRepository : IUserRepository
     {
         _db = db;
     }
-    
+
     public async Task<bool> Create(User entity)
     {
         await _db.User.AddAsync(entity);
@@ -20,12 +20,28 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public Task<Car> Get(int id)
+    public Task<User> Get(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<Car>> Select()
+    public Task<List<User>> Select()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> Delete(User entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<User> Update(User entity)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public Task<User> SimpleUser(int id)
     {
         throw new NotImplementedException();
     }
@@ -43,20 +59,5 @@ public class UserRepository : IUserRepository
     public User GetById(int id)
     {
         return _db.User.FirstOrDefault(u => u.Id == id);
-    }
-
-    public Task<bool> Delete(User entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<User> Update(User entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<User> SimpleUser(int id)
-    {
-        throw new NotImplementedException();
     }
 }

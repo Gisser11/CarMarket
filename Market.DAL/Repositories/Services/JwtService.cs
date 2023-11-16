@@ -1,14 +1,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using Market.DAL.Interfaces.IServices;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Market.DAL.Repositories.Services;
 
-public class JwtService 
+public class JwtService
 {
-    private string secureKey = "this is secure key";
-    
+    private readonly string secureKey = "this is secure key";
+
     public string GenerateJwtToken(int id)
     {
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secureKey));
@@ -22,7 +21,6 @@ public class JwtService
         var securityToken = new JwtSecurityToken(header, payload);
 
         return new JwtSecurityTokenHandler().WriteToken(securityToken);
-
     }
 
     public JwtSecurityToken Verify(string token)
@@ -36,7 +34,7 @@ public class JwtService
                 ValidateIssuer = false,
                 ValidateAudience = false
             },
-            out SecurityToken validatedToken);
+            out var validatedToken);
 
         return (JwtSecurityToken)validatedToken;
     }

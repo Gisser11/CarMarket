@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}market
+    build:
+      context: .
+      dockerfile: Market/Dockerfile
+  
+  client:
+    image: client
+    build:
+      context: ./frontend
+      dockerfile: DockerFile
+      
