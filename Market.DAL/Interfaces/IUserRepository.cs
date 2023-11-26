@@ -9,5 +9,6 @@ public interface IUserRepository : IBaseRepository<User>
     Task<List<User>> SelectUsers();
 
     User GetByEmail(string email);
+    
     User GetById(int id);
 }

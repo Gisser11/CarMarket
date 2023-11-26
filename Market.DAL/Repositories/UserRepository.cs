@@ -7,7 +7,7 @@ namespace Market.DAL.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly ApplicationDbContext _db;
-
+    
     public UserRepository(ApplicationDbContext db)
     {
         _db = db;
@@ -16,7 +16,7 @@ public class UserRepository : IUserRepository
     public async Task<bool> Create(User entity)
     {
         await _db.User.AddAsync(entity);
-        _db.SaveChangesAsync();
+        await _db.SaveChangesAsync();
         return true;
     }
 
@@ -30,9 +30,12 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> Delete(User entity)
+    public async Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        var entity = GetById(id);
+        _db.User.Remove(entity);
+        await _db.SaveChangesAsync();
+        return true;
     }
 
     public Task<User> Update(User entity)
@@ -55,7 +58,7 @@ public class UserRepository : IUserRepository
     {
         return _db.User.FirstOrDefault(u => u.Email == email);
     }
-
+    
     public User GetById(int id)
     {
         return _db.User.FirstOrDefault(u => u.Id == id);

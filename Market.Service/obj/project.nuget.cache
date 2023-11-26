@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2T9CO/aOfa+LxnK+NnYAu7HElT/veHku0TFyCYvWTtp/AqN6KjAtco/umGfduNwNFDi3Ob+6f/gleUsRZ/ompg==",
+  "dgSpecHash": "HNAJvrkrsnhA/nM28y/Kkmz5UFUb25b8A6k86YzAaoh3YukRatTzGiO65Ihv+rWf6F1pfhOtnvvp/cE1wc+hjA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market.Service\\Market.Service.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,8 @@
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\netstandard.library\\2.0.0-preview1-25301-01\\netstandard.library.2.0.0-preview1-25301-01.nupkg.sha512",
+    "C:\\Users\\Пользователь\\.nuget\\packages\\npgsql\\6.0.8\\npgsql.6.0.8.nupkg.sha512",
+    "C:\\Users\\Пользователь\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.8\\npgsql.entityframeworkcore.postgresql.6.0.8.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

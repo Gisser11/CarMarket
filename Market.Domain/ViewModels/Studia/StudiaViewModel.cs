@@ -20,4 +20,6 @@ public class StudiaViewModel
     [JsonPropertyName("TypeStudia")] public TypeStudia TypeStudia { get; set; }
 
     [JsonPropertyName("TypeAdvantages")] public TypeAdvantages TypeAdvantages { get; set; }
+    
+   
 }

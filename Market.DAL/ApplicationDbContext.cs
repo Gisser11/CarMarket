@@ -9,9 +9,7 @@ public class ApplicationDbContext : DbContext
         : base(options)
     {
     }
-
-    public DbSet<Car> Car { get; set; }
-
+    
     public DbSet<User> User { get; set; }
 
     public DbSet<Studia> Studia { get; set; }
@@ -22,11 +20,10 @@ public class ApplicationDbContext : DbContext
     //TODO connectionString как-то нормально сделать
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(
-            "Server=DESKTOP-GRH4NDM;Database=FullStackMarket;Trusted_Connection=True",
+        optionsBuilder.UseNpgsql(
+            "Server=localhost; Port=5433; Database=MarketDatabase; Userid=postgres;Password=faqopl11",
             b => b.MigrationsAssembly("Market"));
     }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -38,3 +35,15 @@ public class ApplicationDbContext : DbContext
             .HasForeignKey(a => a.AssortmentId);
     }
 }
+
+/*
+INSERT INTO "Studia" ("Name", "City", "DataCreate", "MedianPrice", "Rating", "TypeStudia", "TypeAdvantages")
+VALUES ('Название 1', 'Город 1', '2023-11-25', 100.00, 4.5, 1, 0),
+       ('Название 2', 'Город 2', '2023-11-26', 150.00, 4.7, 2, 1);
+
+-- Заполнение таблицы assortment, связанной с studia
+INSERT INTO "Assortments" ("Id", "Name", "Price", "AssortmentId")
+VALUES (1, 'Товар 1', '50.00', 1),
+       (2, 'Товар 2', '75.00', 1),
+       (3, 'Товар 3', '80.00', 2);
+ */

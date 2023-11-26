@@ -1,3 +1,4 @@
+using Market.DAL.Interfaces;
 using Market.DAL.Repositories.Services;
 using Market.Domain.ViewModels.StudiaViewModel;
 using Market.Service.Interfaces;
@@ -11,29 +12,23 @@ public class StudiaController : Controller
 {
     private readonly JwtService _jwtService;
     private readonly IStudiaService _studiaService;
-
-    public StudiaController(IStudiaService studiaService, JwtService jwtService)
+    private readonly IUserRepository _userRepository;
+    public StudiaController(IStudiaService studiaService, JwtService jwtService, IUserRepository userRepository)
     {
         _studiaService = studiaService;
         _jwtService = jwtService;
+        _userRepository = userRepository;
     }
 
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll()
     {
-        try
-        {
-           // var cookiesToken = Request.Cookies["token"];
-           // _jwtService.Verify(cookiesToken);
-
-            var response = await _studiaService.GetAllStudia();
-            if (response.StatusCode == Domain.Enum.StatusCode.OK) return Ok(response.Data);
-            return NotFound();
-        }
-        catch (Exception ex)
-        {
-            return Unauthorized();
-        }
+        var response = await _studiaService.GetAllStudia(); 
+        
+        if (response.StatusCode == Domain.Enum.StatusCode.OK) 
+            return Ok(response.Data);
+        
+        return Ok("Не найдено записей");
     }
 
     [Route("CreateOrUpdate")]
@@ -44,7 +39,8 @@ public class StudiaController : Controller
         {
             var cookiesToken = Request.Cookies["token"];
             _jwtService.Verify(cookiesToken);
-
+            
+            
             if (studiaViewModel.Id == 0)
             {
                 await _studiaService.CreateStudia(studiaViewModel);

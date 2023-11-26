@@ -17,7 +17,7 @@ public class AuthController : Controller
         _userRepository = userRepository;
         _jwtService = jwtService;
     }
-
+    
     [Route("checkEmail")]
     [HttpPost]
     public async Task<IActionResult> checkEmail([FromBody] UserCheckEmailViewModel userCheckEmailViewModel)
@@ -40,9 +40,10 @@ public class AuthController : Controller
         {
             Name = dto.Name,
             Email = dto.Email,
-            Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
+            Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+            TypeUserRole = "SimpleUser"
         };
-
+        
         return Created("Success", await _userRepository.Create(user));
     }
 
@@ -51,7 +52,9 @@ public class AuthController : Controller
     {
         var response = _userRepository.GetByEmail(loginDto.Email);
 
-        if (response == null) return BadRequest(new { message = "Wrong Data" });
+        if (response == null) 
+            return BadRequest(new { message = "Wrong Data" });
+        
         if (!BCrypt.Net.BCrypt.Verify(loginDto.Password, response.Password))
             return BadRequest(new { message = "Wrong Data" });
 
@@ -60,20 +63,28 @@ public class AuthController : Controller
         Response.Cookies.Append("token", token, new CookieOptions
         {
         });
+        
         return Ok(new
         {
             message = "Ok"
         });
     }
-
-    [Route("list")]
+    
+    // СПИСОК ВСЕХ USERS
+    [Route("GetAll")]
     [HttpGet]
     public async Task<IActionResult> SelectAll()
     {
         var response = await _userRepository.SelectUsers();
         return Ok(response);
     }
-
+    
+    
+    
+    
+    
+    
+    // ПРОВЕРКА, КАКОЙ THIS.USER
     [HttpGet("user")]
     public IActionResult User()
     {
@@ -94,7 +105,8 @@ public class AuthController : Controller
             return Unauthorized();
         }
     }
-
+    
+    // ВЫХОД ИЗ СИСТЕМЫ
     [HttpPost("delete")]
     public IActionResult Logout()
     {

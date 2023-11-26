@@ -17,7 +17,7 @@ public class StudiaRepository : IStudiaRepository
     public async Task<bool> Create(Studia entity)
     {
         await _db.Studia.AddAsync(entity);
-        _db.SaveChangesAsync();
+        await _db.SaveChangesAsync();
         return true;
     }
 
@@ -32,7 +32,7 @@ public class StudiaRepository : IStudiaRepository
         return await _db.Studia.Include(x => x.Assortments).ToListAsync(); 
     }
 
-    public Task<bool> Delete(Studia entity)
+    public Task<bool> Delete(int id)
     {
         throw new NotImplementedException();
     }
