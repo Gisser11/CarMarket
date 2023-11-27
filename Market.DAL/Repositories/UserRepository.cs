@@ -38,10 +38,13 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public Task<User> Update(User entity)
+    public async Task<bool> Update(User entity)
     {
-        throw new NotImplementedException();
+        _db.User.Update(entity);
+        await _db.SaveChangesAsync();
+        return true;
     }
+
 
 
     public Task<User> SimpleUser(int id)

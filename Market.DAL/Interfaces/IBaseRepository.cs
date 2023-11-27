@@ -13,5 +13,5 @@ public interface IBaseRepository<T>
 
     Task<bool> Delete(int id);
 
-    Task<T> Update(T entity);
+    Task<bool> Update(T entity);
 }

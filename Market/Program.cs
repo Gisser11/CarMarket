@@ -26,6 +26,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<IStudiaRepository, StudiaRepository>();
 builder.Services.AddScoped<IStudiaService, StudiaService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddEndpointsApiExplorer();
  
 

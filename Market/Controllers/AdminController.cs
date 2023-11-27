@@ -3,6 +3,7 @@ using Market.DAL.Repositories.Services;
 using Market.Domain.Entity;
 using Market.Domain.Enum.UserRoles;
 using Market.Domain.ViewModels.User;
+using Market.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Market.Controllers;
@@ -11,11 +12,12 @@ namespace Market.Controllers;
 public class AdminController : Controller
 {
     private readonly IUserRepository _userRepository;
-    
+    private readonly IAdminService _adminService;
 
-    public AdminController(IUserRepository userRepository)
+    public AdminController(IUserRepository userRepository, IAdminService adminService)
     {
         _userRepository = userRepository;
+        _adminService = adminService;
     }
     
     [Route("StudiaPage")]
@@ -31,7 +33,7 @@ public class AdminController : Controller
         var response = _userRepository.Delete(Id);
         return Ok(Id);
     }
-
+    
     [HttpPost]
     [Route("CreateOrUpdate")]
     public async Task<IActionResult> Create([FromBody] UserViewModel dto)
@@ -46,5 +48,15 @@ public class AdminController : Controller
         
         return Created("Success", await _userRepository.Create(user));
     }
+
+    
+    [HttpPut]
+    [Route("EditUserName")]
+    public IActionResult EditNode([FromBody] UserViewModel dto)
+    {
+        var response = _adminService.Edit(dto.Id, dto);
+        return Ok(response);
+    }
+    
     
 }

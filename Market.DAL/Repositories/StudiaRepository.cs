@@ -37,7 +37,7 @@ public class StudiaRepository : IStudiaRepository
         throw new NotImplementedException();
     }
 
-    public Task<Studia> Update(Studia entity)
+    public Task<bool> Update(Studia entity)
     {
         throw new NotImplementedException();
     }

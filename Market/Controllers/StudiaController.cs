@@ -12,12 +12,11 @@ public class StudiaController : Controller
 {
     private readonly JwtService _jwtService;
     private readonly IStudiaService _studiaService;
-    private readonly IUserRepository _userRepository;
-    public StudiaController(IStudiaService studiaService, JwtService jwtService, IUserRepository userRepository)
+    
+    public StudiaController(IStudiaService studiaService, JwtService jwtService)
     {
         _studiaService = studiaService;
         _jwtService = jwtService;
-        _userRepository = userRepository;
     }
 
     [HttpGet("GetAll")]
