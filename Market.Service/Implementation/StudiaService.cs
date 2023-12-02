@@ -19,7 +19,7 @@ public class StudiaService : IStudiaService
     public async Task<IBaseResponse<IEnumerable<Studia>>> GetAllStudia()
     {
         var baseResponse = new BaseResponse<IEnumerable<Studia>>();
-
+        
         try
         {
             var StudiaList = await _studiaRepository.Select();
@@ -30,7 +30,7 @@ public class StudiaService : IStudiaService
                 baseResponse.StatusCode = StatusCode.OK;
                 return baseResponse;
             }
-
+            
             baseResponse.Data = StudiaList;
             baseResponse.StatusCode = StatusCode.OK;
             return baseResponse;
@@ -53,7 +53,7 @@ public class StudiaService : IStudiaService
             {
                 Name = studiaViewModel.Name,
                 City = studiaViewModel.City,
-                DataCreate = DateTime.Now,
+                DataCreate = DateTime.UtcNow,
                 MedianPrice = studiaViewModel.MedianPrice,
                 Rating = studiaViewModel.Rating,
                 TypeStudia = studiaViewModel.TypeStudia,
@@ -73,4 +73,6 @@ public class StudiaService : IStudiaService
 
         return baseResponse;
     }
+    
+   
 }

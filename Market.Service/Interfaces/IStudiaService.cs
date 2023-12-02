@@ -9,4 +9,6 @@ public interface IStudiaService
     Task<IBaseResponse<IEnumerable<Studia>>> GetAllStudia();
 
     Task<IBaseResponse<StudiaViewModel>> CreateStudia(StudiaViewModel studiaViewModel);
+    
+    
 }

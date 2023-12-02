@@ -6,13 +6,14 @@ namespace Market.DAL.Repositories;
 
 public class StudiaRepository : IStudiaRepository
 {
+    #region _dbContext
     private readonly ApplicationDbContext _db;
-
+    
     public StudiaRepository(ApplicationDbContext db)
     {
         _db = db;
     }
-
+    #endregion
 
     public async Task<bool> Create(Studia entity)
     {
@@ -21,17 +22,13 @@ public class StudiaRepository : IStudiaRepository
         return true;
     }
 
-    public Task<Studia> Get(int id)
-    {
-        throw new NotImplementedException();
-    }
 
     //TODO isolate studia and assortment. 
     public async Task<List<Studia>> Select()
     {
         return await _db.Studia.Include(x => x.Assortments).ToListAsync(); 
     }
-
+    
     public Task<bool> Delete(int id)
     {
         throw new NotImplementedException();
@@ -40,5 +37,10 @@ public class StudiaRepository : IStudiaRepository
     public Task<bool> Update(Studia entity)
     {
         throw new NotImplementedException();
+    }
+
+    public Studia? GetById(int id)
+    {
+        return _db.Studia.FirstOrDefault(u => u.Id == id);
     }
 }

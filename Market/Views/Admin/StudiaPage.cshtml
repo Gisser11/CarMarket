@@ -15,7 +15,289 @@
 </head>
 <body>
 <div>
-    <h1>Privet kak dela</h1>
+    <script >
+    function openAssortmentModal(id, assortments) {
+        // Создаем и отображаем модальное окно
+        var modal = Ext.create('Ext.window.Window', {
+            title: 'Редактирование ассортимента студии под номером ' + id,
+            modal: true,
+            closable: true,
+            layout: 'fit',
+            maximized: true, 
+            items: [
+                
+                Ext.create('Ext.grid.Panel', {
+                    title: 'Список товаров',
+                    store: Ext.create('Ext.data.Store', {
+                        fields: ['id', 'assortmentId', 'name', 'price'],
+                        data: assortments // Подставьте ваши данные ассортимента
+                    }),
+                    columns: [
+                        { text: 'ID', dataIndex: 'id', flex: 1 },
+                        { text: 'Name', dataIndex: 'name', flex: 1 },
+                        { text: 'Price', dataIndex: 'price', flex: 1 }
+                    ]
+                })
+            ],
+            listeners: {
+                maximize: function() {
+                    // Вы можете добавить дополнительные действия при максимизации окна здесь
+                }
+            }
+        });
+    
+        modal.show();
+    }
+    </script>
+    <script >
+    Ext.application({
+        name: 'MyApp',
+        launch: function () {
+            var container = Ext.getBody(); 
+                    container.setStyle({
+                        padding: '20px',
+                        overflow: 'hidden'
+                    });
+                    
+                    // Ext.create('Ext.Button', {
+                    //     text: 'Добавить новый сервис',
+                    //     renderTo: Ext.getBody(),
+                    //     margin: 40,
+                    //     handler: function () {
+                    //         var userWindow = Ext.create('Ext.window.Window', {
+                    //             title: 'Добавить пользователя',
+                    //             layout: 'form',
+                    //             items: [{
+                    //                 xtype: 'form',
+                    //                 itemId: 'userForm',
+                    //                 items: [{
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'Name',
+                    //                     name: 'name'
+                    //                 }, {
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'city',
+                    //                     name: 'city'
+                    //                 },
+                    //                 {
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'MedianPrice',
+                    //                     name: 'medianPrice'
+                    //                 },
+                    //                 {
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'Rating',
+                    //                     name: 'rating'
+                    //                 },
+                    //                 {
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'TypeStudia',
+                    //                     name: 'typeStudia'
+                    //                 },
+                    //                 {
+                    //                     xtype: 'textfield',
+                    //                     fieldLabel: 'typeAdvantages',
+                    //                     name: 'typeAdvantages'
+                    //                 }]
+                    //             }],
+                    //             buttons: [{
+                    //                 text: 'Сохранить',
+                    //                 handler: function () {
+                    //                     var form = userWindow.down('#userForm').getForm();
+                    //                     if (form.isValid()) {
+                    //                         var formData = form.getValues();
+                    //
+                    //                         Ext.Ajax.request({
+                    //                             url: 'https://localhost:7135/Admin/CreateOrUpdateStudia',
+                    //                             method: 'POST',
+                    //                             jsonData: formData,
+                    //                             success: function (response) {
+                    //                                 console.log('Данные успешно отправлены', response);
+                    //                                 userWindow.close();
+                    //                             },
+                    //                             failure: function (response) {
+                    //                                 console.error('Ошибка при отправке данных', response);
+                    //                             }
+                    //                         });
+                    //                     }
+                    //                 }
+                    //             }, {
+                    //                 text: 'Отмена',
+                    //                 handler: function () {
+                    //                     userWindow.close();
+                    //                 }
+                    //             }]
+                    //         });
+                    //
+                    //         userWindow.show();
+                    //     }
+                    // });
+                    
+                    
+            Ext.define('Assortment', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    'id', 'assortmentId', 'name', 'price'
+                ]
+            });
+            
+            Ext.define('Report', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    'id', 'name', 'city', 'dataCreate', 'medianPrice', 'rating', 'typeStudia', 'typeAdvantages'
+                ]
+            });
+    
+            var store = Ext.create('Ext.data.Store', {
+                sorters: [{
+                    property: 'Id'
+                }],
+                model: 'Report',
+                proxy: {
+                    type: 'rest',
+                    url: 'https://localhost:7135/api/Studia/GetAll', 
+                    reader: {
+                        type: 'json',
+                        rootProperty: 'DataList'
+                    },
+                    wrter: {
+                        type: 'json'
+                    }
+                },
+                
+                autoLoad: true 
+            });
+    
+            
+            var grid = Ext.create('Ext.grid.Panel', {
+                title: 'Рабоа и назначение новых владельцев автосервисов',
+                store: store,
+                columns: [
+                    { text: 'ID', dataIndex: 'id', editor: 'textfield', flex: 1},
+                    { text: 'Юзернейм', dataIndex: 'name', editor: 'textfield', flex: 1 },
+                    { text: 'Почта', dataIndex: 'city', editor: 'textfield', flex: 1 },
+                    { text: 'Время создания / Изменения', dataIndex: 'dataCreate', editor: 'textfield',flex: 1 },
+                    { text: 'Средний чек', dataIndex: 'medianPrice', editor: 'textfield',flex: 1 },
+                    { text: 'Рейтинг', dataIndex: 'rating', editor: 'textfield',flex: 1 },
+                    { text: 'Тип студии', dataIndex: 'typeStudia', editor: 'textfield',flex: 1 },
+                    { text: 'Преимущества', dataIndex: 'typeAdvantages', editor: 'textfield',flex: 1 },
+                    {
+                        text: 'Assortments',
+                        dataIndex: 'assortments', 
+                        flex: 1,
+                        renderer: function (value, metaData, record) {
+                            return '<a href="#" class="assortmentsLink">View Assortments</a>';
+                        }
+                    },
+                    {
+                        xtype: 'actioncolumn',
+                        text: 'Удаление', 
+                        items: [{
+                            iconCls: 'x-fa fa-trash-o', 
+                            tooltip: 'Методы',
+                            handler: function (grid, rowIndex, colIndex) {
+                                var record = grid.getStore().getAt(rowIndex);
+                                var reportId = record.get('id');
+                                
+                                Ext.Ajax.request({
+                                    url: 'https://localhost:7135/Admin/DeleteUserId/' + reportId,
+                                    method: 'DELETE',
+                                    success: function (response, opts) { 
+                                        if (reportId === 0) {
+                                            alert("Так нельзя делать")
+                                        }
+    
+                                        if (response.StatusCode === 401) {
+                                            alert("Произведите заново вход")    
+                                        }
+    
+                                        else {
+                                            alert("Запись с ReportId " + reportId + " удалена");
+                                            store.remove(record);
+                                        }
+                                    },
+                                    failure: function (response, opts) {
+                                        alert("Произошла ошибка при удалении записи");
+                                    }
+                                });
+                            }
+                        }]
+                    }
+                ],
+                listeners: {
+                    cellclick: function (grid, td, cellIndex, record, tr, rowIndex, e, eOpts) {
+                         if (e.getTarget('.assortmentsLink')) {
+                            e.stopEvent();
+                            var id = record.get('id');
+                            var assortments = record.get('assortments');
+                
+                            // Открываем модальное окно для редактирования ассортимента
+                            openAssortmentModal(id, assortments);
+                        }
+                    }
+                },
+                viewConfig: {
+                    getRowClass: function(rec) {
+                        var id = rec.get('Id');
+                        if (id === 0) {
+                            return 'green-row';
+                        }
+                        else {
+                            return 'white-row';
+                        }
+                    }
+                },
+               selType: 'rowmodel',
+               plugins: [
+                Ext.create('Ext.grid.plugin.RowEditing', {
+                    clicksToEdit: 2,
+                    saveBtnText: 'Сохранить',
+                    cancelBtnText: 'Отменить',
+                    listeners: {
+                        edit: function (editor, context) {
+                            var record = context.record;
+                            var changes = record.getChanges();
+                            var allFields = record.getFields();
+                            var dataToSend = {};
+        
+                            // Получаем все поля записи и добавляем их в объект для отправки
+                            allFields.forEach(function (field) {
+                                var fieldName = field.name;
+                                var fieldValue = record.get(fieldName);
+        
+                                // Если поле изменилось или было добавлено, добавляем его в объект для отправки
+                                if (changes.hasOwnProperty(fieldName)) {
+                                    dataToSend[fieldName] = changes[fieldName];
+                                } else {
+                                    dataToSend[fieldName] = fieldValue;
+                                }
+                            });
+        
+                            Ext.Ajax.request({
+                                url: 'https://localhost:7135/Admin/EditUserName',
+                                method: 'PUT',
+                                jsonData: dataToSend,
+                                success: function (response) {
+                                    console.log('Успешно обновлено', response);
+                                },
+                                failure: function (response) {
+                                    console.error('Ошибка при обновлении', response);
+                                }
+                            });
+                        }
+                    }
+                })
+                ],
+             
+                  
+                                        
+                renderTo: Ext.getBody()
+            });
+            
+        }
+        
+    });
+    </script>
 </div>
 </body>
 </html>

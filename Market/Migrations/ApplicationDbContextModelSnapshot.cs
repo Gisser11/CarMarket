@@ -33,6 +33,9 @@ namespace Market.Migrations
                     b.Property<int>("AssortmentId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime?>("DateCreate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -46,6 +49,40 @@ namespace Market.Migrations
                     b.HasIndex("AssortmentId");
 
                     b.ToTable("Assortments");
+                });
+
+            modelBuilder.Entity("Market.Domain.Entity.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ServiceType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ServicesId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServicesId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Market.Domain.Entity.Studia", b =>
@@ -127,9 +164,22 @@ namespace Market.Migrations
                     b.Navigation("Studia");
                 });
 
+            modelBuilder.Entity("Market.Domain.Entity.Service", b =>
+                {
+                    b.HasOne("Market.Domain.Entity.Studia", "Studia")
+                        .WithMany("Services")
+                        .HasForeignKey("ServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Studia");
+                });
+
             modelBuilder.Entity("Market.Domain.Entity.Studia", b =>
                 {
                     b.Navigation("Assortments");
+
+                    b.Navigation("Services");
                 });
 #pragma warning restore 612, 618
         }

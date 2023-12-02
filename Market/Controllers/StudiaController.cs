@@ -29,29 +29,4 @@ public class StudiaController : Controller
         
         return Ok("Не найдено записей");
     }
-
-    [Route("CreateOrUpdate")]
-    [HttpPost]
-    public async Task<IActionResult> Create([FromBody] StudiaViewModel studiaViewModel)
-    {
-        try
-        {
-            var cookiesToken = Request.Cookies["token"];
-            _jwtService.Verify(cookiesToken);
-            
-            
-            if (studiaViewModel.Id == 0)
-            {
-                await _studiaService.CreateStudia(studiaViewModel);
-                return Ok("успешно");
-            }
-            //TODO EDIT METHOD HERE
-
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            return Unauthorized();
-        }
-    }
 }

@@ -21,5 +21,7 @@ public class Studia
     public TypeAdvantages TypeAdvantages { get; set; }
 
     public List<Assortment> Assortments { get; set; }
+    
+    public List<Service> Services { get; set; }
 
 }

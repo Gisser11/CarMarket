@@ -1,29 +1,42 @@
 using Market.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Market.DAL;
 
 public class ApplicationDbContext : DbContext
 {
+    #region BackendAndMigrationsConfig
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString = configuration.GetConnectionString("MarketDatabase");
+
+            optionsBuilder.UseNpgsql(connectionString, b => b.MigrationsAssembly("Market"));
+        }
+    }
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
-    
+
+    #endregion
+
     public DbSet<User> User { get; set; }
 
     public DbSet<Studia> Studia { get; set; }
 
     public DbSet<Assortment> Assortments { get; set; }
 
-    // Штука, где мы явно указываем, куда сохранять миграции (Если правильно понял)
-    //TODO connectionString как-то нормально сделать
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql(
-            "Server=localhost; Port=5433; Database=MarketDatabase; Userid=postgres;Password=faqopl11",
-            b => b.MigrationsAssembly("Market"));
-    }
+    public DbSet<Service> Services { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -33,6 +46,10 @@ public class ApplicationDbContext : DbContext
             .HasOne(s => s.Studia)
             .WithMany(a => a.Assortments)
             .HasForeignKey(a => a.AssortmentId);
+
+        modelBuilder.Entity<Service>().HasOne(s => s.Studia)
+            .WithMany(_services => _services.Services)
+            .HasForeignKey(_services => _services.ServicesId);
     }
 }
 
