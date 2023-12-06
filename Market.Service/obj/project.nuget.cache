@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "b6eBAj8c5T1zj7nhO4U6z4lcGtWvhT6qHLYdoUvrlYWgNqOg5ss9ZH64nUQO29GnKXebEyHjqjugtL663/coXw==",
+  "dgSpecHash": "MYlhuUftchEyOlm6e0Ia8EPU2xbhpD1pWY+5b8L63mJJZTKpT48Wrkpk4kJiaDS89mbIGwQC5yepSqba3NEnHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\.net\\CsharpProjects\\Market\\Market.Service\\Market.Service.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Пользователь\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Пользователь\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",

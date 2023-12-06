@@ -2,72 +2,78 @@ using Market.DAL.Interfaces;
 using Market.DAL.Repositories.Services;
 using Market.Domain.Entity;
 using Market.Domain.ViewModels.User;
+using Market.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Market.Controllers;
 
-[Route("api")]
+[Route("[controller]")]
 public class AuthController : Controller
 {
-    private readonly JwtService _jwtService;
+    #region SERVICES INIT
+    
+    private readonly IUserService _userService;
     private readonly IUserRepository _userRepository;
 
-    public AuthController(IUserRepository userRepository, JwtService jwtService)
+    public AuthController(IUserRepository userRepository, IUserService userService)
     {
         _userRepository = userRepository;
-        _jwtService = jwtService;
+        _userService = userService;
     }
     
+
+    #endregion
+
+    #region UserAuthorize
+
     [Route("checkEmail")]
     [HttpPost]
     public async Task<IActionResult> checkEmail([FromBody] UserCheckEmailViewModel userCheckEmailViewModel)
     {
-        var response = _userRepository.GetByEmail(userCheckEmailViewModel.Email);
+        var response = _userService.CheckUserEmail(userCheckEmailViewModel.Email);
         
-        if (response != null)
+        if (response.Result.StatusCode != Domain.Enum.StatusCode.OK)
         {
-            return Ok(true);
+            return Ok(false);
         }
         
-        return Ok(false);
+        return Ok(true);
+    }
+    
+    [Route("GetById/{id:int}")]
+    [HttpGet]
+    public async Task<IActionResult> Register([FromRoute] int id)
+    {
+        var response = _userService.GetById(id);
+
+        return Ok(response.Result);
     }
     
     [Route("register")]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] UserRegisterViewModel dto)
     {
-        var user = new User
-        {
-            Name = dto.Name,
-            Email = dto.Email,
-            Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-            TypeUserRole = "SimpleUser"
-        };
+        dto.TypeUserRole = false;
         
-        return Created("Success", await _userRepository.Create(user));
+        var response = _userService.RegisterUser(dto);
+        
+        return Json(response);
     }
 
     [HttpPost("login")]
     public IActionResult Login([FromBody] UserLoginViewModel loginDto)
     {
-        var response = _userRepository.GetByEmail(loginDto.Email);
+        var response = _userService.LoginUser(loginDto);
 
-        if (response == null) 
-            return BadRequest(new { message = "Wrong Data" });
-        
-        if (!BCrypt.Net.BCrypt.Verify(loginDto.Password, response.Password))
-            return BadRequest(new { message = "Wrong Data" });
-
-        var token = _jwtService.GenerateJwtToken(response.Id);
-
-        Response.Cookies.Append("token", token, new CookieOptions
+        if (response.Result.StatusCode == Domain.Enum.StatusCode.OK)
         {
-        });
-        
-        return Ok(new
-        {
-            message = "Ok"
-        });
+            var token = response.Result.Token;
+            Response.Cookies.Append("token", token);
+            return Json(response);
+        }
+
+        var ex = response.Result;
+        return BadRequest(ex);
     }
     
     // СПИСОК ВСЕХ USERS
@@ -75,46 +81,40 @@ public class AuthController : Controller
     [HttpGet]
     public async Task<IActionResult> SelectAll()
     {
-        var response = await _userRepository.SelectUsers();
-        return Ok(response);
+        var response = await _userService.SelectAll();
+        return Json(response);
     }
     
-    
-    
-    
-    
-    
-    // ПРОВЕРКА, КАКОЙ THIS.USER
     [HttpGet("user")]
     public IActionResult User()
     {
-        try
-        {
-            var cookiesToken = Request.Cookies["token"];
-
-            var token = _jwtService.Verify(cookiesToken);
-
-            var userId = int.Parse(token.Issuer);
-
-            var user = _userRepository.GetById(userId);
-
-            return Ok(user);
-        }
-        catch (Exception ex)
+        var cookiesToken = Request.Cookies["token"];
+        
+        if (cookiesToken == null)
         {
             return Unauthorized();
-        }
+        } 
+        
+        var response = _userService.GetUser(cookiesToken);
+
+        return Json(response);
     }
     
     // ВЫХОД ИЗ СИСТЕМЫ
     [HttpPost("delete")]
     public IActionResult Logout()
     {
-        Response.Cookies.Delete("token");
-
-        return Ok(new
+        try
         {
-            message = "success"
-        });
+            Response.Cookies.Delete("token");
+            return Json("Success");
+        }
+        catch (Exception ex)
+        {
+            return Json(ex);
+        }
+
     }
+
+    #endregion
 }

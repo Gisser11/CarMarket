@@ -43,12 +43,12 @@ public class UserRepository : IUserRepository
         return await _db.User.ToListAsync();
     }
 
-    public User? GetByEmail(string email)
+    public User GetByEmail(string email)
     {
         return _db.User.FirstOrDefault(u => u.Email == email) ;
     }
     
-    public User? GetById(int id)
+    public User GetById(int id)
     {
         return _db.User.FirstOrDefault(u => u.Id == id);
     }

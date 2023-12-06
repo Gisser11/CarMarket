@@ -1,4 +1,3 @@
-using Market.Domain.Enum.UserRoles;
 
 namespace Market.Domain.ViewModels.User;
 
@@ -10,4 +9,5 @@ public class UserRegisterViewModel
 
     public string Password { get; set; }
     
+    public bool? TypeUserRole { get; set; }
 }

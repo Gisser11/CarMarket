@@ -9,3 +9,4 @@ C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Doma
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Domain\obj\Debug\net6.0\refint\Market.Domain.dll
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Domain\obj\Debug\net6.0\Market.Domain.pdb
 C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Domain\obj\Debug\net6.0\ref\Market.Domain.dll
+C:\Users\Пользователь\Desktop\.net\CsharpProjects\Market\Market.Domain\obj\Debug\net6.0\Market.Domain.csproj.AssemblyReference.cache

@@ -1,8 +1,4 @@
 using Market.DAL.Interfaces;
-using Market.DAL.Repositories.Services;
-using Market.Domain.Entity;
-using Market.Domain.Enum.UserRoles;
-using Market.Domain.Response;
 using Market.Domain.ViewModels.StudiaViewModel;
 using Market.Domain.ViewModels.User;
 using Market.Service.Interfaces;
@@ -17,13 +13,15 @@ public class AdminController : Controller
     private readonly IAdminService _adminService;
     private readonly IStudiaService _studiaService;
     private readonly IAssortmentService _assortmentService;
+    private readonly IUserService _userService;
 
-    public AdminController(IUserRepository userRepository, IAdminService adminService, IStudiaService studiaService, IAssortmentService assortmentService)
+    public AdminController(IUserRepository userRepository, IAdminService adminService, IStudiaService studiaService, IAssortmentService assortmentService, IUserService userService)
     {
         _userRepository = userRepository;
         _adminService = adminService;
         _studiaService = studiaService;
         _assortmentService = assortmentService;
+        _userService = userService;
     }
     
     [Route("StudiaPage")]
@@ -32,7 +30,7 @@ public class AdminController : Controller
         return View();
     }
     
-        [Route("UserPage")]
+    [Route("UserPage")]
     public IActionResult UserPage()
     {
         return View();
@@ -76,29 +74,23 @@ public class AdminController : Controller
 
     #endregion
     
-    
     #region USER CRUD
     [HttpDelete]
     [Route("DeleteUserId/{Id:int}")]
     public IActionResult DeleteUser([FromRoute] int Id)
     {
-        var response = _userRepository.Delete(Id);
-        return Ok(Id);
+        var response = _adminService.DeleteUser(Id);
+        return Ok(response);
     }
     
     [HttpPost]
     [Route("CreateOrUpdateUser")]
-    public async Task<IActionResult> Create([FromBody] UserViewModel dto)
+    public async Task<IActionResult> Create([FromBody] UserRegisterViewModel dto)
     {
-        var user = new User
-        {
-            Name = dto.Name,
-            Email = dto.Email,
-            Password = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-            TypeUserRole = "Moderator"
-        };
+        dto.TypeUserRole = true;
+        var response = _userService.RegisterUser(dto);
         
-        return Created("Success", await _userRepository.Create(user));
+        return Json(response);
     }
 
     
@@ -106,7 +98,7 @@ public class AdminController : Controller
     [Route("EditUserName")]
     public IActionResult EditNode([FromBody] UserViewModel dto)
     {
-        var response = _adminService.Edit(dto.Id, dto);
+        var response = _adminService.EditUser(dto.Id, dto);
         return Ok(response);
     }
     #endregion

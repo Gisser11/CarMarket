@@ -29,6 +29,7 @@ builder.Services.AddScoped<IStudiaService, StudiaService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IAssortmentRepository, AssortmentRepository>();
 builder.Services.AddScoped<IAssortmentService, AssortmentService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddEndpointsApiExplorer();
  
 

@@ -1257,6 +1257,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Market.DAL": "1.0.0",
           "Market.Domain": "1.0.0",
           "Microsoft.Extensions.Configuration.Json": "6.0.0",

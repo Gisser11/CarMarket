@@ -15,15 +15,15 @@ public class StudiaRepository : IStudiaRepository
     }
     #endregion
 
+    #region StudiaMethods
+
     public async Task<bool> Create(Studia entity)
     {
         await _db.Studia.AddAsync(entity);
         await _db.SaveChangesAsync();
         return true;
     }
-
-
-    //TODO isolate studia and assortment. 
+    
     public async Task<List<Studia>> Select()
     {
         return await _db.Studia.Include(x => x.Assortments).ToListAsync(); 
@@ -43,4 +43,6 @@ public class StudiaRepository : IStudiaRepository
     {
         return _db.Studia.FirstOrDefault(u => u.Id == id);
     }
+
+    #endregion
 }
